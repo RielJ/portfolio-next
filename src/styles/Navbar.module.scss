@@ -1,0 +1,47 @@
+.header {
+  padding: 32px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  width: 100%;
+}
+
+.scrolled {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(
+    138.39deg,
+    rgba(255, 255, 255, 0.2) -7.57%,
+    rgba(255, 255, 255, 0) 107.25%
+  );
+}
+
+.navItem {
+  padding: 0 12px;
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+
+  & > a {
+    display: inline-block;
+    font-weight: 800;
+    transition: all 0.2s;
+
+    &:hover::after {
+      opacity: 1;
+      transform: translate3d(0, 0.2em, 0);
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0.1em;
+      opacity: 0;
+      transition: opacity 300ms, transform 300ms;
+    }
+  }
+}
