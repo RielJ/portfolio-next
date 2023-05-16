@@ -21,17 +21,17 @@ export const PortfolioCard = ({
     <div
       {...props}
       className={clsx(
-        'border-2 rounded-md h-[85%] cursor-pointer',
+        'border-[1px] rounded-md cursor-pointer',
         index % 2 && 'mt-20'
       )}
     >
       {work.image && (
-        <div className="relative h-[70%]">
+        <div className="relative h-[352px]">
           <Image
             alt="Portrait Image"
             fill={true}
             src={work.image}
-            className="rounded-md object-cover"
+            className="rounded-t-md object-cover"
           />
         </div>
       )}

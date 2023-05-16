@@ -13,7 +13,7 @@ export function Container({
   className,
 }: SectionProps) {
   const rootClass = clsx(
-    'relative min-h-screen w-screen bg-cosmic bg-cover 2xl:py-20 lg:py-14 py-9',
+    'relative min-h-screen w-screen bg-cosmic bg-cover 2xl:py-20 lg:py-14 py-9 z-10',
     rootClassName && rootClassName
   )
   return (

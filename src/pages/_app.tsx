@@ -1,9 +1,10 @@
 import '@/styles/globals.css'
 import { ThemeProvider } from 'next-themes'
 import type { AppProps } from 'next/app'
-import Head from 'next/head'
 import { JetBrains_Mono, Judson, Kavoon } from 'next/font/google'
+import Head from 'next/head'
 
+import { CursorEffects } from '@/components'
 import 'swiper/css'
 import 'swiper/css/autoplay'
 
@@ -34,6 +35,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <main
           className={`${jetBrains.variable} ${judson.variable} ${kavoon.variable} font-primary`}
         >
+          <CursorEffects />
           <Component {...pageProps} />
         </main>
       </ThemeProvider>

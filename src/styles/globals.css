@@ -4,10 +4,25 @@
 
 @layer base {
   body {
-    @apply dark:bg-[#3c3c3c] bg-[#fff];
+    @apply dark:bg-[rgb(29,29,31)] bg-[#fff];
     transition: background 1.5s;
+    overflow: hidden;
   }
   html {
     @apply scroll-smooth;
+  }
+}
+
+@keyframes rotate {
+  from {
+    rotate: 0deg;
+  }
+
+  50% {
+    scale: 1 1.5;
+  }
+
+  to {
+    rotate: 360deg;
   }
 }
