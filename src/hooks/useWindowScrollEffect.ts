@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { DependencyList, useEffect } from 'react'
 
 type Cleanup = void | (() => void)
 
@@ -27,7 +27,8 @@ function windowScrollEffect(
 // Always pass in a callback made with usecallback!
 export function useWindowScrollEffect(
   effect: (x: number, y: number) => Cleanup,
-  deps: any[]
+  deps: DependencyList
 ) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => windowScrollEffect(effect), deps)
 }
