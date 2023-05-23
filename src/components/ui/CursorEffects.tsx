@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import styles from '@/styles/CursorEffects.module.scss'
+import styles from './CursorEffects.module.scss'
 
 export const CursorEffects = () => {
   const blobRef = useRef<HTMLDivElement>(null)

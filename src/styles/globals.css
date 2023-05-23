@@ -4,12 +4,21 @@
 
 @layer base {
   body {
-    @apply dark:bg-[rgb(29,29,31)] bg-[#fff];
+    @apply dark:bg-background bg-[#fff];
     transition: background 1.5s;
     overflow: hidden;
   }
   html {
     @apply scroll-smooth;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: 'Poppins', sans-serif; */
+    scroll-behavior: smooth;
+    color-scheme: dark;
   }
 }
 
@@ -25,4 +34,15 @@
   to {
     rotate: 360deg;
   }
+}
+
+.violet-gradient {
+  background: #804dee;
+  background: linear-gradient(-90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
+  background: -webkit-linear-gradient(
+    -90deg,
+    #804dee 0%,
+    rgba(60, 51, 80, 0) 100%
+  );
+  border-color: linear-gradient(-90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
 }
