@@ -19,15 +19,21 @@ module.exports = {
         '2xl': '1536px',
       },
     },
+
     extend: {
+      colors: {
+        background: '#050816',
+        primary: '#915EFF',
+        secondary: '#aaa6c3',
+        tertiary: '#151030',
+        accent: '#ff4057',
+      },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'hero-pattern': "url('/lines.png')",
       },
       fontFamily: {
-        primary: ['var(--font-jetbrains-mono)'],
-        secondary: ['var(--font-judson)'],
+        primary: ['var(--font-poppins)'],
+        secondary: ['var(--font-jetbrains-mono)'],
         logo: ['var(--font-kavoon)'],
       },
     },

@@ -1,22 +1,23 @@
 import '@/styles/globals.css'
 import { ThemeProvider } from 'next-themes'
 import type { AppProps } from 'next/app'
-import { JetBrains_Mono, Judson, Kavoon } from 'next/font/google'
+import { JetBrains_Mono, Kavoon, Poppins } from 'next/font/google'
 import Head from 'next/head'
 
 import { CursorEffects } from '@/components'
 import 'swiper/css'
 import 'swiper/css/autoplay'
+import { useState, useEffect } from 'react'
 
 const jetBrains = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-jetbrains-mono',
 })
 
-const judson = Judson({
+const poppins = Poppins({
   weight: '700',
   subsets: ['latin'],
-  variable: '--font-judson',
+  variable: '--font-poppins',
 })
 
 const kavoon = Kavoon({
@@ -26,6 +27,24 @@ const kavoon = Kavoon({
 })
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [width, setWidth] = useState<number>(0)
+
+  // TODO: Determine how to disable CursorEffects when
+  // it's on touch only devices.
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth)
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange)
+    setWidth(window.innerWidth)
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange)
+    }
+  }, [])
+
+  const isMobile = width <= 768
+
   return (
     <>
       <Head>
@@ -33,10 +52,9 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <ThemeProvider attribute="class">
         <main
-          className={`${jetBrains.variable} ${judson.variable} ${kavoon.variable} font-primary`}
+          className={`${jetBrains.variable} ${poppins.variable} ${kavoon.variable} font-primary`}
         >
-          <CursorEffects />
-          <Component {...pageProps} />
+          {!isMobile && <CursorEffects />} <Component {...pageProps} />
         </main>
       </ThemeProvider>
     </>
