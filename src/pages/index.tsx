@@ -1,12 +1,13 @@
 import { Container } from '@/components'
-import { About, Contacts, Hero, Navbar, Portfolio } from '@/features'
+import { Contacts, Hero, Navbar, Portfolio } from '@/features'
 
 export default function Home() {
   return (
-    <Container>
-      <Navbar />
-      <Hero />
-      <About />
+    <Container className="relative">
+      <div>
+        <Navbar />
+        <Hero />
+      </div>
       <Portfolio />
       <Contacts />
     </Container>
