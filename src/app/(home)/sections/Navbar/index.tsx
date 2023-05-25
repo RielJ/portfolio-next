@@ -1,8 +1,10 @@
+'use client'
+
 import { navLinks } from '@/constants'
 import clsx from 'clsx'
 import React, { useEffect, useState } from 'react'
-import { BiMenu } from 'react-icons/bi'
 import { AiOutlineClose } from 'react-icons/ai'
+import { BiMenu } from 'react-icons/bi'
 import { NavLink } from './NavLink'
 import { NavLogo } from './NavLogo'
 import styles from './Navbar.module.scss'
@@ -10,7 +12,6 @@ import styles from './Navbar.module.scss'
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [toggle, setToggle] = useState(false)
-  // const { theme, setTheme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,15 +27,15 @@ export const Navbar = () => {
 
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
   return (
     <div
       className={clsx(
-        styles.header,
         scrolled && styles.scrolled,
-        'backdrop-blur-[80px] sm:px-16 px-6 py-6'
+        'fixed top-0 left-0 z-[200] w-full sm:px-16 px-6 py-6'
       )}
     >
-      <div className="container flex items-center justify-between p-0 max-w-7xl">
+      <div className="flex items-center justify-between mx-auto inset-0 max-w-7xl">
         <NavLogo />
         <div className="w-full flex items-end justify-end">
           <ul className="sm:flex hidden items-center justify-between p-0">

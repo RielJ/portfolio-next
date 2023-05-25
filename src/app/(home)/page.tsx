@@ -1,9 +1,9 @@
 import { Container } from '@/components'
-import { Contacts, Hero, Navbar, Portfolio } from '@/features'
+import { Navbar, Hero, Portfolio, Contacts } from './sections'
 
-export default function Home() {
+const HomePage = () => {
   return (
-    <Container className="relative">
+    <Container>
       <div>
         <Navbar />
         <Hero />
@@ -13,3 +13,5 @@ export default function Home() {
     </Container>
   )
 }
+
+export default HomePage

@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Contacts(): JSX.Element {
-  return <div></div>
+  return <section>Contact</section>
 }
 
 export { Contacts }

@@ -8,6 +8,7 @@
 
 .scrolled {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(80px);
   background: linear-gradient(
     138.39deg,
     rgba(255, 255, 255, 0.2) -7.57%,

@@ -1,9 +1,16 @@
+'use client'
+
 import { portfolios } from '@/constants/portfolio'
 import React from 'react'
 import { Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { PortfolioCard } from './PortfolioCard'
 import { SwiperControls } from './SwiperControls'
+import './PortfolioCard.module.css'
+
+import clsx from 'clsx'
+import 'swiper/css'
+import 'swiper/css/autoplay'
 
 export const PortfolioCarousel = ({
   ...props
@@ -17,9 +24,9 @@ export const PortfolioCarousel = ({
         slidesPerView={2}
         spaceBetween={100}
         modules={[Autoplay]}
-        autoplay={true}
+        autoplay={{ pauseOnMouseEnter: true }}
         rewind={true}
-        className="space-y-10"
+        className={clsx('space-y-10 relative', 'card-groups')}
       >
         {portfolios.map((portfolio, index) => (
           <SwiperSlide key={portfolio.name + index}>

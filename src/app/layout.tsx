@@ -1,13 +1,9 @@
-import '@/styles/globals.css'
-import { ThemeProvider } from 'next-themes'
-import type { AppProps } from 'next/app'
-import { JetBrains_Mono, Kavoon, Poppins } from 'next/font/google'
-import Head from 'next/head'
+'use client'
 
 import { CursorEffects } from '@/components'
-import 'swiper/css'
-import 'swiper/css/autoplay'
-import { useState, useEffect } from 'react'
+import { JetBrains_Mono, Kavoon, Poppins } from 'next/font/google'
+import { ReactNode, useEffect, useState } from 'react'
+import './globals.css'
 
 const jetBrains = JetBrains_Mono({
   subsets: ['latin'],
@@ -26,7 +22,11 @@ const kavoon = Kavoon({
   variable: '--font-kavoon',
 })
 
-export default function App({ Component, pageProps }: AppProps) {
+interface IRootLayout {
+  children: ReactNode
+}
+
+const RootLayout = ({ children }: IRootLayout) => {
   const [width, setWidth] = useState<number>(0)
 
   // TODO: Determine how to disable CursorEffects when
@@ -46,17 +46,19 @@ export default function App({ Component, pageProps }: AppProps) {
   const isMobile = width <= 768
 
   return (
-    <>
-      <Head>
+    <html>
+      <head>
+        <link rel="shortcut icon" href="/logo.png" />
         <title>RielJ Portfolio</title>
-      </Head>
-      <ThemeProvider attribute="class">
-        <main
-          className={`${jetBrains.variable} ${poppins.variable} ${kavoon.variable} font-primary`}
-        >
-          {!isMobile && <CursorEffects />} <Component {...pageProps} />
-        </main>
-      </ThemeProvider>
-    </>
+      </head>
+      <body
+        className={`${jetBrains.variable} ${poppins.variable} ${kavoon.variable} font-primary relative`}
+      >
+        {!isMobile && <CursorEffects />}
+        {children}
+      </body>
+    </html>
   )
 }
+
+export default RootLayout

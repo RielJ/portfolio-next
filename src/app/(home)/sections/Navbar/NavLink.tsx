@@ -17,7 +17,7 @@ export const NavLink = ({ children, link }: NavLinkProps) => {
   // const { theme } = useTheme()
 
   return (
-    <li className={clsx(styles.navItem)}>
+    <li className={styles.navItem}>
       <Link
         href={`/#${link.toLowerCase()}`}
         scroll={false}
