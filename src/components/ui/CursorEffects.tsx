@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useRef } from 'react'
 import styles from './CursorEffects.module.scss'
 
@@ -23,9 +25,9 @@ export const CursorEffects = () => {
   }, [blobRef])
 
   return (
-    <>
+    <div>
       <div className={styles.blob} ref={blobRef}></div>
       <div className={styles.blur}></div>
-    </>
+    </div>
   )
 }
