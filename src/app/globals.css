@@ -10,7 +10,7 @@
   body {
     @apply bg-background;
     position: absolute;
-    overflow-y: scroll;
+    overflow: hidden;
     transition: background 1.5s;
     scroll-behavior: smooth;
   }
