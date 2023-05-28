@@ -1,5 +1,3 @@
-import clsx from 'clsx'
-// import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import React, { ReactNode } from 'react'
 import styles from './Navbar.module.scss'
@@ -14,17 +12,12 @@ interface NavLinkProps
 }
 
 export const NavLink = ({ children, link }: NavLinkProps) => {
-  // const { theme } = useTheme()
-
   return (
     <li className={styles.navItem}>
       <Link
         href={`/#${link.toLowerCase()}`}
         scroll={false}
-        className={clsx(
-          // theme === 'dark' ? 'after:bg-white' : 'after:bg-black',
-          'hover:text-white text-secondary'
-        )}
+        className="hover:text-primary text-white text-lg"
       >
         {children}
       </Link>
