@@ -1,0 +1,36 @@
+.hero-heading {
+  font-size: clamp(5rem, 2.2718rem + 3.1068vw, 6rem);
+  line-height: 1.1;
+}
+
+.hero-subheading {
+  font-size: clamp(1rem, 3.1068vw, 2rem);
+  line-height: 1.1;
+  margin: 0 0 6px 0;
+}
+
+.hero-bg {
+  background-size: cover;
+}
+
+.hero-image {
+  width: clamp(14.0625rem, 11.8629rem + 9.3851vw, 23.125rem);
+  aspect-ratio: 2/3;
+  overflow: hidden;
+}
+
+.hero-image:hover > img {
+  animation: pulse 800ms ease-in-out;
+  filter: url('#noise');
+}
+
+@keyframes pulse {
+  from,
+  to {
+    scale: 1;
+  }
+
+  50% {
+    scale: 1.08;
+  }
+}

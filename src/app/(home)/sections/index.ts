@@ -1,4 +1,5 @@
 export * from './Contacts'
 export * from './Hero'
+export * from './About'
 export * from './Navbar'
 export * from './Portfolio'

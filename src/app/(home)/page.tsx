@@ -1,5 +1,5 @@
 import { Container } from '@/components'
-import { Navbar, Hero, Portfolio, Contacts } from './sections'
+import { Navbar, Hero, Portfolio, Contacts, About } from './sections'
 
 const HomePage = () => {
   return (
@@ -8,6 +8,7 @@ const HomePage = () => {
         <Navbar />
         <Hero />
       </div>
+      <About />
       <Portfolio />
       <Contacts />
     </Container>
