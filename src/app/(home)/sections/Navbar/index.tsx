@@ -1,8 +1,10 @@
 'use client'
 
 import { navLinks } from '@/constants'
+import { _menu, menuItems } from '@/utils/animations'
 import clsx from 'clsx'
-import React, { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import React, { useEffect, useRef, useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { BiMenu } from 'react-icons/bi'
 import { NavLink } from './NavLink'
@@ -11,7 +13,8 @@ import styles from './Navbar.module.scss'
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
-  const [toggle, setToggle] = useState(false)
+  const [toggleMenu, setToggleMenu] = useState(false)
+  const menuRef = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,17 +31,28 @@ export const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    function handleClickOutside() {
+      setToggleMenu(false)
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [menuRef])
+
   return (
     <div
       className={clsx(
-        scrolled && styles.scrolled,
-        'fixed top-0 left-0 z-[200] w-full sm:px-16 px-6 py-6'
+        'fixed top-0 left-0 z-[200] w-full sm:px-16 px-6 py-6',
+        scrolled && styles.scrolled
       )}
     >
-      <div className="flex items-center justify-between mx-auto inset-0 max-w-7xl">
+      <nav className="flex items-center justify-between mx-auto inset-0 max-w-7xl">
         <NavLogo />
         <div className="w-full flex items-end justify-end">
-          <ul className="sm:flex hidden items-center justify-between p-0">
+          <ul className="sm:flex hidden items-center justify-between p-0 w-full">
             {navLinks.map((link, index) => (
               <NavLink key={index} link={link}>
                 {link}
@@ -48,36 +62,32 @@ export const Navbar = () => {
           <div className="sm:hidden">
             <button
               onClick={() => {
-                setToggle(!toggle)
+                setToggleMenu(!toggleMenu)
               }}
             >
-              {toggle ? <AiOutlineClose /> : <BiMenu />}
+              {toggleMenu ? <AiOutlineClose /> : <BiMenu />}
             </button>
-            <div
-              className={`${
-                toggle ? 'flex' : 'hidden'
-              } p-6 absolute top-12 right-0`}
-            >
-              <ul className="flex flex-col gap-2 items-center justify-between p-0">
-                {navLinks.map((link, index) => (
-                  <NavLink key={index} link={link}>
-                    {link}
-                  </NavLink>
-                ))}
-              </ul>
-            </div>
+            {toggleMenu && (
+              <motion.nav
+                ref={menuRef}
+                variants={_menu}
+                className="p-6 absolute top-12 right-0"
+              >
+                <motion.ul
+                  className="flex flex-col gap-6 items-center justify-between p-0"
+                  variants={menuItems}
+                >
+                  {navLinks.map((link, index) => (
+                    <NavLink key={index} link={link}>
+                      {link}
+                    </NavLink>
+                  ))}
+                </motion.ul>
+              </motion.nav>
+            )}
           </div>
-          {/* <div className="ml-3"> */}
-          {/*   <button */}
-          {/*     onClick={() => */}
-          {/*       theme == 'dark' ? setTheme('light') : setTheme('dark') */}
-          {/*     } */}
-          {/*   > */}
-          {/*     {theme && theme != 'dark' ? '🌑' : '🌙'} */}
-          {/*   </button> */}
-          {/* </div> */}
         </div>
-      </div>
+      </nav>
     </div>
   )
 }

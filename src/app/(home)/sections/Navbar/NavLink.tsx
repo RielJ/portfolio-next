@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React, { ReactNode } from 'react'
 import styles from './Navbar.module.scss'
+import { motion } from 'framer-motion'
 
 interface NavLinkProps
   extends React.DetailedHTMLProps<
@@ -13,7 +14,7 @@ interface NavLinkProps
 
 export const NavLink = ({ children, link }: NavLinkProps) => {
   return (
-    <li className={styles.navItem}>
+    <motion.li className={styles.navItem} layoutId={`layout-${link}`}>
       <Link
         href={`/#${link.toLowerCase()}`}
         scroll={false}
@@ -21,6 +22,6 @@ export const NavLink = ({ children, link }: NavLinkProps) => {
       >
         {children}
       </Link>
-    </li>
+    </motion.li>
   )
 }
