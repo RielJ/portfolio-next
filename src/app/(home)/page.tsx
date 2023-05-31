@@ -1,5 +1,12 @@
 import { Container } from '@/components'
-import { Navbar, Hero, Portfolio, Contacts, About } from './sections'
+import {
+  About,
+  Contacts,
+  Experience,
+  Hero,
+  Navbar,
+  Portfolio,
+} from './sections'
 
 const HomePage = () => {
   return (
@@ -9,6 +16,7 @@ const HomePage = () => {
         <Hero />
       </div>
       <About />
+      <Experience />
       <Portfolio />
       <Contacts />
     </Container>
