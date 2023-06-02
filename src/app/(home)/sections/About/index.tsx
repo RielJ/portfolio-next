@@ -1,9 +1,10 @@
 import React from 'react'
 import { AlienCanvas } from './canvas'
+import { Section } from '@/components'
 
 const About = () => {
   return (
-    <section className="relative w-full m-auto min-h-screen text-center max-w-7xl flex flex-col items-center justify-center gap-[3rem] snap-center">
+    <Section className="gap-[3rem]">
       <div>
         <AlienCanvas />
       </div>
@@ -20,7 +21,7 @@ const About = () => {
           scalable software applications that drive business growth.
         </p>
       </div>
-    </section>
+    </Section>
   )
 }
 

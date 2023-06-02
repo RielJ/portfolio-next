@@ -1,0 +1,25 @@
+.portfolio-card {
+  padding: 30px;
+  background-color: rgba(70, 64, 84, 0.1);
+  color: white;
+  position: relative;
+}
+
+.portfolio-card:after {
+  content: '';
+  height: 70px;
+  width: 2px;
+  position: absolute;
+  left: -1px;
+  top: 65%;
+  transition: top, opacity;
+  transition-duration: 600ms;
+  transition-timing-function: ease;
+  background: linear-gradient(transparent, #915eff, transparent);
+  opacity: 0;
+}
+
+.portfolio-card:hover:after {
+  top: 25%;
+  opacity: 1;
+}
