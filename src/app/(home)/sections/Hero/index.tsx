@@ -9,7 +9,7 @@ import { NoiseEffects } from '@/components'
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 const defaultHeroText = '-RielJ'
 
-export const Hero = () => {
+const HeroText = () => {
   const [heroText, setHeroText] = useState(defaultHeroText)
 
   const handleMouseEnterLeaveEffect = useCallback(() => {
@@ -41,10 +41,6 @@ export const Hero = () => {
   }, [])
 
   useEffect(() => {
-    console.log(heroText)
-  }, [heroText])
-
-  useEffect(() => {
     const interval = handleMouseEnterLeaveEffect()
     return () => {
       clearInterval(interval)
@@ -52,8 +48,28 @@ export const Hero = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log('rerendered', heroText)
+  return (
+    <motion.h1
+      className={clsx(
+        'font-secondary font-extrabold text-heading',
+        styles['hero-heading']
+      )}
+      onMouseEnter={handleMouseEnterLeaveEffect}
+      // onMouseLeave={handleMouseEnterLeaveEffect}
+      animate={{
+        color: '#915EFF',
+      }}
+      whileHover={{
+        color: '#bb9af7',
+        transition: { duration: '500ms', ease: 'easeInOut' },
+      }}
+    >
+      {heroText}
+    </motion.h1>
+  )
+}
 
+export const Hero = () => {
   return (
     <section className="relative w-full min-h-screen mx-auto" id="about">
       <NoiseEffects id="heroimage" />
@@ -82,23 +98,7 @@ export const Hero = () => {
         <div className="w-1 sm:h-80 h-60 violet-gradient md:flex hidden" />
         <div className="space-y-5 w-full md:text-left text-center">
           <motion.p className="font-secondary font-bold">Hi, I am</motion.p>
-          <motion.h1
-            className={clsx(
-              'font-secondary font-extrabold text-heading',
-              styles['hero-heading']
-            )}
-            onMouseEnter={handleMouseEnterLeaveEffect}
-            // onMouseLeave={handleMouseEnterLeaveEffect}
-            animate={{
-              color: '#915EFF',
-            }}
-            whileHover={{
-              color: '#bb9af7',
-              transition: { duration: '500ms', ease: 'easeInOut' },
-            }}
-          >
-            {heroText}
-          </motion.h1>
+          <HeroText />
           <motion.h2 className={clsx(styles['hero-subheading'], 'font-bold')}>
             I craft software passionately
           </motion.h2>
