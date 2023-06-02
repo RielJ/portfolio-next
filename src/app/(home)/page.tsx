@@ -3,6 +3,7 @@ import {
   About,
   Contacts,
   Experience,
+  Footer,
   Hero,
   Navbar,
   Portfolio,
@@ -19,6 +20,7 @@ const HomePage = () => {
       <Experience />
       <Portfolio />
       <Contacts />
+      <Footer />
     </Container>
   )
 }
