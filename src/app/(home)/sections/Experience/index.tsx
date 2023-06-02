@@ -6,6 +6,7 @@ import styles from './Experience.module.scss'
 import { useVisibleScroll, useWindowSize } from '@/hooks'
 import { motion } from 'framer-motion'
 import { IExperienceData } from '@/types'
+import { Section } from '@/components'
 
 const Line = () => {
   const ref = useRef<HTMLDivElement>(null)
@@ -71,19 +72,11 @@ const Content = ({
   experience: IExperienceData
   index: number
 }) => {
-  // const ref = useRef<HTMLDivElement>(null)
-  // const scroll = useVisibleScroll(ref)
-  // const screenSize = useWindowSize()
-  // const contentTouched =
-  //   scroll &&
-  //   screenSize &&
-  //   scroll.y + screenSize.height / 2 > scroll.offsetBoundingRect.top - 30
   const isRight = index % 2
 
   const cardVariants = {
     offscreen: {
       opacity: 0,
-      // left: isRight ? 0 : 50,
       right: 50,
     },
     onscreen: {
@@ -134,9 +127,9 @@ const Experience = () => {
   const timelineRef = useRef<HTMLDivElement | null>(null)
 
   return (
-    <section className="relative w-full mx-auto min-h-screen text-center max-w-7xl  flex flex-col items-center justify-center gap-[3rem] snap-center">
+    <Section>
       <div className="flex-1 overflow-hidden w-full">
-        <h1 className="heading">Experience Timeline</h1>
+        <h1 className="heading">Experience</h1>
       </div>
       <div ref={timelineRef} className={clsx(styles['timeline'], '')}>
         <Line />
@@ -154,7 +147,7 @@ const Experience = () => {
           })}
         </ul>
       </div>
-    </section>
+    </Section>
   )
 }
 

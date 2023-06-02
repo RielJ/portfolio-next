@@ -19,6 +19,27 @@
 .timeline .timeline-list .timeline-item:last-child {
   margin-bottom: 0;
 }
+
+@media only screen and (max-width: 768px) {
+  .timeline-item:after {
+    content: '';
+    height: 70px;
+    width: 2px;
+    position: absolute;
+    left: -1px;
+    top: 65%;
+    transition: top, opacity;
+    transition-duration: 600ms;
+    transition-timing-function: ease;
+    background: linear-gradient(transparent, #915eff, transparent);
+    opacity: 0;
+  }
+
+  .timeline-item:hover:after {
+    top: 25%;
+    opacity: 1;
+  }
+}
 // .timeline-content h1 {
 //   font-weight: 500;
 //   font-size: 25px;
