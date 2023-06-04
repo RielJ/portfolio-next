@@ -4,8 +4,9 @@
   "private": true,
   "engines": {
     "node": ">=18.15.0",
-    "yarn": ">=1.22.0",
-    "npm": "please-use-yarn"
+    "pnpm": ">=8.6.0",
+    "npm": "please-use-pnpm",
+    "yarn": "please-use-pnpm"
   },
   "scripts": {
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
