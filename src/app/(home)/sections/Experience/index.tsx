@@ -127,13 +127,13 @@ const Experience = () => {
   const timelineRef = useRef<HTMLDivElement | null>(null)
 
   return (
-    <Section>
+    <Section id="work">
       <div className="flex-1 overflow-hidden w-full">
         <h1 className="heading">Experience</h1>
       </div>
       <div ref={timelineRef} className={clsx(styles['timeline'], '')}>
         <Line />
-        <ul className={clsx(styles['timeline-list'])}>
+        <ul className={clsx(styles['timeline-list'], 'relative')}>
           {experiences.map((experience, index) => {
             return (
               <li
@@ -145,6 +145,9 @@ const Experience = () => {
               </li>
             )
           })}
+          {Array.from(Array(experiences.length), () => (
+            <div className={clsx(styles['timeline-alien'])}></div>
+          ))}
         </ul>
       </div>
     </Section>

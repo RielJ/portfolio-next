@@ -1,10 +1,11 @@
 'use client'
+import { Button, NoiseEffects } from '@/components'
 import clsx from 'clsx'
-import React, { useCallback, useEffect, useState } from 'react'
-import styles from './Hero.module.scss'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { NoiseEffects } from '@/components'
+import { useRouter } from 'next/navigation'
+import React, { useCallback, useEffect, useState } from 'react'
+import styles from './Hero.module.scss'
 
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 const defaultHeroText = '-RielJ'
@@ -70,8 +71,9 @@ const HeroText = () => {
 }
 
 export const Hero = () => {
+  const router = useRouter()
   return (
-    <section className="relative w-full min-h-screen mx-auto" id="about">
+    <section className="relative w-full min-h-screen mx-auto" id="home">
       <NoiseEffects id="heroimage" />
       <div
         className={clsx(
@@ -106,6 +108,15 @@ export const Hero = () => {
             Results-driven Software Engineer with 4+ years of experience in
             developing robust and scalable applications
           </motion.p>
+          <Button
+            className="px-6"
+            variant="outline"
+            onClick={() => {
+              router.push('/#contact')
+            }}
+          >
+            Say Hi!
+          </Button>
         </div>
       </div>
     </section>

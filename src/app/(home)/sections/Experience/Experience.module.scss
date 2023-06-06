@@ -20,7 +20,7 @@
   margin-bottom: 0;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) {
   .timeline-item:after {
     content: '';
     height: 70px;
@@ -39,25 +39,6 @@
     top: 25%;
     opacity: 1;
   }
-}
-// .timeline-content h1 {
-//   font-weight: 500;
-//   font-size: 25px;
-//   line-height: 30px;
-//   margin-bottom: 10px;
-// }
-// .timeline-content p {
-//   font-size: 12px;
-//   line-height: 30px;
-//   font-weight: 300;
-// }
-// .timeline-content h3 {
-//   font-size: 12px;
-//   font-weight: 300;
-//   margin-bottom: 10px;
-//   letter-spacing: 2px;
-// }
-@media only screen and (min-width: 768px) {
   .timeline-lottie {
     content: '';
     position: absolute;
