@@ -14,7 +14,7 @@ import styles from './Navbar.module.scss'
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [toggleMenu, setToggleMenu] = useState(false)
-  const menuRef = useRef(null)
+  const menuRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,13 +32,16 @@ export const Navbar = () => {
   }, [])
 
   useEffect(() => {
-    function handleClickOutside() {
-      setToggleMenu(false)
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current?.contains(event.target as Node)) {
+        console.log('CLICKED OUTSIDE')
+        setToggleMenu(false)
+      }
     }
 
-    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('mousedown', handleClickOutside, true)
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('mousedown', handleClickOutside, true)
     }
   }, [menuRef])
 
@@ -54,7 +57,7 @@ export const Navbar = () => {
         <div className="w-full flex items-end justify-end">
           <ul className="sm:flex hidden items-center justify-between p-0 w-full">
             {navLinks.map((link, index) => (
-              <NavLink key={index} link={link}>
+              <NavLink key={index + link} link={link}>
                 {link}
               </NavLink>
             ))}
@@ -71,7 +74,10 @@ export const Navbar = () => {
               <motion.nav
                 ref={menuRef}
                 variants={_menu}
-                className="p-6 absolute top-12 right-0"
+                className={clsx(
+                  styles['nav-small'],
+                  'p-6 absolute top-12 right-0'
+                )}
               >
                 <motion.ul
                   className="flex flex-col gap-6 items-center justify-between p-0"
