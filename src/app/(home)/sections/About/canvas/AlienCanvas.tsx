@@ -1,5 +1,5 @@
 'use client'
-import { OrbitControls, useGLTF } from '@react-three/drei'
+import { useGLTF } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import React, { Suspense, useEffect, useRef, useState } from 'react'
 import { CanvasLoader } from './CanvasLoader'
@@ -38,11 +38,11 @@ const AlienCanvas = () => {
       <Suspense fallback={<CanvasLoader />}>
         <Alien isMobile={isMobile} />
         {/* <axesHelper /> */}
-        <OrbitControls
-          enableZoom={false}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2}
-        />
+        {/* <OrbitControls */}
+        {/*   enableZoom={false} */}
+        {/*   maxPolarAngle={Math.PI / 2} */}
+        {/*   minPolarAngle={Math.PI / 2} */}
+        {/* /> */}
       </Suspense>
     </Canvas>
   )
@@ -70,9 +70,9 @@ const Alien = ({ isMobile }: { isMobile: boolean }) => {
 
   return (
     <mesh>
-      <hemisphereLight intensity={0.15} groundColor="black" />
+      <hemisphereLight intensity={0.45} groundColor="black" />
       <spotLight
-        position={[-20, 10, 10]}
+        position={[-10, 10, 10]}
         angle={0.12}
         penumbra={1}
         intensity={1}
