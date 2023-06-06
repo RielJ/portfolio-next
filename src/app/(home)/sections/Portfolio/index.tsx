@@ -2,20 +2,22 @@
 import { Section } from '@/components'
 import { portfolios } from '@/constants'
 import clsx from 'clsx'
+import { motion } from 'framer-motion'
 import React from 'react'
+import { AiOutlineCode } from 'react-icons/ai'
+import { HiExternalLink } from 'react-icons/hi'
 import styles from './Portfolio.module.scss'
 import './PortfolioCard.module.css'
-import { motion } from 'framer-motion'
 
 export const Portfolio = () => {
   return (
-    <Section id="work" className="mt-[3rem] min-h-0">
+    <Section id="portfolio" className="mt-[3rem] !min-h-0">
       <div className="container pb-16 space-y-20">
         <div className="w-full overflow-hidden text-center">
           <div className="heading">Contributions</div>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-2">
-          {portfolios.map((portfolio) => (
+          {portfolios.map((portfolio, index) => (
             <motion.div
               whileHover={{
                 y: -5,
@@ -23,11 +25,49 @@ export const Portfolio = () => {
               key={portfolio.name}
               className={clsx(styles['portfolio-card'], 'text-left space-y-2')}
             >
-              <div className="h-12"></div>
-              <div className="text-accent">{portfolio.name}</div>
-              <div className="font-normal text-sm font-secondary">
-                {portfolio.description}
-              </div>
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: -5,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    delay: 0.2 * (index + 1),
+                    duration: 0.5,
+                  },
+                }}
+              >
+                <div className="flex justify-between items-center mb-3 py-2">
+                  <div>
+                    <AiOutlineCode className="h-8 w-8" />
+                  </div>
+                  <div>
+                    {portfolio.link && (
+                      <a href={portfolio.link} target="_blank">
+                        <HiExternalLink className="cursor-pointer h-6 w-6" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+                <div className="text-accent">{portfolio.name}</div>
+                <div className="font-normal text-sm font-secondary">
+                  {portfolio.description}
+                </div>
+                <div className="mt-4">
+                  <ul className="flex flex-wrap gap-3 justify-start">
+                    {portfolio.tools?.map((tool) => (
+                      <li
+                        key={tool + portfolio.name}
+                        className="text-xs font-bold text-muted-foreground font-secondary"
+                      >
+                        {tool}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>
