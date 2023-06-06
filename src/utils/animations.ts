@@ -14,7 +14,7 @@ export const _menu: Variants = {
 
 export const menuItems: Variants = {
   initial: {
-    y: '-50%',
+    y: -10,
   },
   animate: {
     y: 0,
@@ -26,7 +26,7 @@ export const menuItems: Variants = {
     },
   },
   exit: {
-    y: '-50%',
+    y: -10,
     transition: {
       duration: 0.5,
     },
