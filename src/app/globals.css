@@ -3,23 +3,93 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    overflow-y: scroll;
+  * {
+    @apply border-border;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color-scheme: dark;
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-background;
+    @apply dark:bg-background dark:text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
     position: absolute;
     overflow: hidden;
     transition: background 1.5s;
     scroll-behavior: smooth;
   }
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color-scheme: dark;
+  html {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
+
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --primary: 259, 100%, 68%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 288 67% 79%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 229, 63%, 5%;
+    --foreground: 213 31% 91%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --primary: 259, 100%, 68%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 248, 19%, 71%;
+    --secondary-foreground: 210 40% 98%;
+
+    --accent: 353, 100%, 63%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
   }
 }
 
@@ -71,6 +141,15 @@
     rgba(60, 51, 80, 0) 100%
   );
   border-color: linear-gradient(-90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes rotate {
