@@ -6,24 +6,39 @@ export const portfolios: IPortfolioCard[] = [
     description:
       'Atlantis World is building the Web3 social metaverse by connecting Web3 with social, gaming and education in one lightweight virtual world.',
     image: '/atlantis.jpg',
+    tools: ['ethers.js', 'Next.js', 'Tailwind CSS', 'solidity'],
   },
   {
     name: 'Affyn',
     description:
       'Affyn is a metaverse project that operates a Blockchain-based game startup to create a sustainable gaming economy.',
     image: '/affyn.jpg',
+    link: 'https://www.affyn.com/',
+    tools: [
+      'ethers.js',
+      'web3.js',
+      'Next.js',
+      'Tailwind CSS',
+      'Framer',
+      'AWS',
+      'IAM',
+    ],
   },
   {
     name: 'Interseed',
     description:
       'Platform for founders to become fund-ready and talents to build their portfolio with the help of funding and jobs opportunities.',
     image: '/interseed.png',
+    link: 'https://app.interseed.co/',
+    tools: ['Next.js', 'Nest.js', 'Tailwind CSS', 'sanity'],
   },
   {
     name: 'Flex',
     description:
       'Complete business payment and spend management solution that will dramatically improve how SMEs access working capital and manage business expenses.',
     image: '/flex.png',
+    link: 'https://www.flexnow.co/',
+    tools: ['Next.js', 'Tailwind CSS', 'sanity', 'Framer'],
   },
   // {
   //   name: 'SoA Manager',
