@@ -100,7 +100,7 @@ function Contacts(): JSX.Element {
       <div className="grid grid-cols-5 w-full">
         <div className="col-span-5 space-y-5">
           <div className="flex justify-between">
-            <div className="md:max-w-xl max-w-md text-left">
+            <div className="md:max-w-xl max-w-[15rem] text-left">
               Whether you&apos;re interested in working with me or just want to
               say hello, I&apos;d love to hear from you!
             </div>
