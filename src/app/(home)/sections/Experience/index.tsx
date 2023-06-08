@@ -7,6 +7,7 @@ import { useVisibleScroll, useWindowSize } from '@/hooks'
 import { motion } from 'framer-motion'
 import { IExperienceData } from '@/types'
 import { Section } from '@/components'
+import { cardVariants } from '@/lib'
 
 const Line = () => {
   const ref = useRef<HTMLDivElement>(null)
@@ -73,23 +74,6 @@ const Content = ({
   index: number
 }) => {
   const isRight = index % 2
-
-  const cardVariants = {
-    offscreen: {
-      opacity: 0,
-      right: 50,
-    },
-    onscreen: {
-      opacity: 1,
-      left: 0,
-      right: 0,
-      transition: {
-        type: 'spring',
-        bounce: 0.4,
-        duration: 0.8,
-      },
-    },
-  }
 
   return (
     <motion.div
