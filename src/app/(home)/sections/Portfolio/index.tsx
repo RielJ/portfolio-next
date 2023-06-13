@@ -8,6 +8,7 @@ import { AiOutlineCode } from 'react-icons/ai'
 import { HiExternalLink } from 'react-icons/hi'
 import styles from './Portfolio.module.scss'
 import './PortfolioCard.module.css'
+import { portfolioCardVariants, portfolioContainerVariants } from '@/lib'
 
 export const Portfolio = () => {
   return (
@@ -16,7 +17,12 @@ export const Portfolio = () => {
         <div className="w-full overflow-hidden text-center">
           <div className="heading">Contributions</div>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-2">
+        <motion.div
+          variants={portfolioContainerVariants}
+          initial="hidden"
+          whileInView="show"
+          className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-2"
+        >
           {portfolios.map((portfolio, index) => (
             <motion.div
               whileHover={{
@@ -25,20 +31,7 @@ export const Portfolio = () => {
               key={portfolio.name}
               className={clsx(styles['portfolio-card'], 'text-left space-y-2')}
             >
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: -5,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  transition: {
-                    delay: 0.2 * (index + 1),
-                    duration: 0.5,
-                  },
-                }}
-              >
+              <motion.div variants={portfolioCardVariants}>
                 <div className="flex justify-between items-center mb-3 py-2">
                   <div>
                     <AiOutlineCode className="h-8 w-8" />
@@ -70,7 +63,7 @@ export const Portfolio = () => {
               </motion.div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
         {/* <PortfolioCarousel /> */}
       </div>
     </Section>
