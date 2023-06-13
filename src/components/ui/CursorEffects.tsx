@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useEffect, useRef } from 'react'
-import styles from './CursorEffects.module.scss'
 
 export const CursorEffects = () => {
   const blobRef = useRef<HTMLDivElement>(null)
@@ -12,10 +11,10 @@ export const CursorEffects = () => {
       blobRef.current &&
         blobRef.current.animate(
           {
-            left: `${pageX}px`,
-            top: `${pageY}px`,
+            left: `${pageX - 20}px`,
+            top: `${pageY - 20}px`,
           },
-          { duration: 3000, fill: 'forwards' }
+          { duration: 500, fill: 'forwards' }
         )
     }
     window.addEventListener('pointermove', listener as EventListener)
@@ -26,8 +25,13 @@ export const CursorEffects = () => {
 
   return (
     <div>
-      <div className={styles.blob} ref={blobRef}></div>
-      <div className={styles.blur}></div>
+      <div
+        ref={blobRef}
+        className="pointer-events-none absolute left-0 top-0 z-[99] h-10 w-10 rounded-full bg-white mix-blend-difference duration-75 ease-in-out"
+      >
+        {/* <div className={styles.blob} ref={blobRef}></div> */}
+        {/* <div className={styles.blur}></div> */}
+      </div>
     </div>
   )
 }
