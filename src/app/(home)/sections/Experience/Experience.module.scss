@@ -11,7 +11,7 @@
 }
 .timeline .timeline-list .timeline-item {
   padding: 30px;
-  background-color: rgba(70, 64, 84, 0.1);
+  background-color: hsl(var(--card));
   color: white;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -39,6 +39,9 @@
     top: 25%;
     opacity: 1;
   }
+}
+
+@media only screen and (min-width: 768px) {
   .timeline-lottie {
     content: '';
     position: absolute;

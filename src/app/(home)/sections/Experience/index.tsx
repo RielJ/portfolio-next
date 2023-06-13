@@ -97,8 +97,8 @@ const Content = ({
         <span className="text-accent">@ {experience.company}</span>{' '}
       </h1>
       <ul className="list-disc">
-        {experience.description.map((desc) => (
-          <li key={desc} className="font-normal text-sm font-secondary">
+        {experience.description.map((desc, i) => (
+          <li key={desc + i} className="font-normal text-sm font-secondary">
             <p>{desc}</p>
           </li>
         ))}
@@ -129,9 +129,6 @@ const Experience = () => {
               </li>
             )
           })}
-          {Array.from(Array(experiences.length), () => (
-            <div className={clsx(styles['timeline-alien'])}></div>
-          ))}
         </ul>
       </div>
     </Section>
