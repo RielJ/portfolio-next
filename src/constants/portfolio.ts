@@ -40,6 +40,14 @@ export const portfolios: IPortfolioCard[] = [
     link: 'https://www.flexnow.co/',
     tools: ['Next.js', 'Tailwind CSS', 'sanity', 'Framer'],
   },
+  {
+    name: 'Dev Setup',
+    description:
+      'Developmet Setup using Arch Linux as main OS, neovim as editor, and other tools to boost developer experience and productivity.',
+    image: '/dev-setup.png',
+    link: 'https://github.com/RielJ/dotfiles',
+    tools: ['lua', 'bash', 'unix', 'Arch Linux', 'python', 'neovim'],
+  },
   // {
   //   name: 'SoA Manager',
   //   description:
