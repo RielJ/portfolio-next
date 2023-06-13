@@ -24,6 +24,30 @@
   filter: url('#noise');
 }
 
+.hero-image {
+  & .first {
+    opacity: 1;
+    transition: opacity 800ms ease-in-out;
+  }
+
+  & .second {
+    // display: none;
+    opacity: 0;
+    transition-delay: 1600ms;
+    transition: opacity 800ms ease-in-out;
+  }
+
+  &:hover {
+    .first {
+      opacity: 0;
+    }
+    .second {
+      opacity: 1;
+      // display: block;
+    }
+  }
+}
+
 @keyframes pulse {
   from,
   to {

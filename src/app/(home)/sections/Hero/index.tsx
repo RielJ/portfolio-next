@@ -82,7 +82,7 @@ export const Hero = () => {
         )}
       >
         <div className="w-full flex justify-center items-center">
-          <div
+          <motion.div
             className={clsx(
               'relative rounded-10 rounded-md overflow-hidden',
               styles['hero-image']
@@ -93,9 +93,15 @@ export const Hero = () => {
               alt="Portrait Image"
               fill={true}
               src="/hero-picture.png"
-              className="object-cover"
+              className={clsx(styles['first'], 'object-cover ')}
             />
-          </div>
+            <Image
+              alt="Portrait Image"
+              fill={true}
+              src="/hero-picture-2.png"
+              className={clsx(styles['second'], 'object-cover ')}
+            />
+          </motion.div>
         </div>
         <div className="w-1 sm:h-80 h-60 violet-gradient md:flex hidden" />
         <div className="space-y-5 w-full md:text-left text-center">
