@@ -74,7 +74,7 @@ module.exports = {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
       backgroundImage: {
-        'hero-pattern': "url('/lines.png')",
+        'hero-pattern': "url('/herobg.png')",
       },
       fontFamily: {
         primary: ['var(--font-poppins)'],

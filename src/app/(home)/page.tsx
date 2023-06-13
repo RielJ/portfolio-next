@@ -12,7 +12,7 @@ import {
 const HomePage = () => {
   return (
     <Container>
-      <div>
+      <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
         <Navbar />
         <Hero />
       </div>
