@@ -1,5 +1,10 @@
 'use client'
-import { useGLTF } from '@react-three/drei'
+import {
+  MeshReflectorMaterial,
+  PerspectiveCamera,
+  Stage,
+  useGLTF,
+} from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import React, { Suspense, useEffect, useRef, useState } from 'react'
 import { CanvasLoader } from './CanvasLoader'
@@ -29,22 +34,50 @@ const AlienCanvas = () => {
 
   return (
     <Canvas
+      style={{
+        position: `relative`,
+        height: '20rem',
+        width: '100%',
+        maxWidth: '80rem',
+      }}
       gl={{ antialias: false, preserveDrawingBuffer: true }}
-      frameloop="demand"
       shadows
       dpr={[1, 1.5]}
-      camera={{ position: [0, 1, 5], fov: 25 }}
     >
+      <PerspectiveCamera
+        makeDefault
+        position={[0, 10, 50]}
+        fov={75}
+        far={1000}
+      />
+      <Plane />
       <Suspense fallback={<CanvasLoader />}>
-        <Alien isMobile={isMobile} />
-        {/* <axesHelper /> */}
-        {/* <OrbitControls */}
-        {/*   enableZoom={false} */}
-        {/*   maxPolarAngle={Math.PI / 2} */}
-        {/*   minPolarAngle={Math.PI / 2} */}
-        {/* /> */}
+        <Stage environment="city" intensity={0.6} shadows={false}>
+          <Alien isMobile={isMobile} />
+        </Stage>
       </Suspense>
     </Canvas>
+  )
+}
+
+const Plane = () => {
+  return (
+    <mesh rotation={[-Math.PI / 2, 0, 0]}>
+      <planeGeometry args={[10, 10]} />
+      <MeshReflectorMaterial
+        mirror={1}
+        blur={[300, 100]}
+        resolution={2048}
+        mixBlur={1}
+        mixStrength={40}
+        roughness={1}
+        depthScale={1.2}
+        minDepthThreshold={0.4}
+        maxDepthThreshold={1.4}
+        color="#05060d"
+        metalness={0.5}
+      />
+    </mesh>
   )
 }
 
@@ -83,8 +116,8 @@ const Alien = ({ isMobile }: { isMobile: boolean }) => {
       <primitive
         ref={group}
         object={scene}
-        scale={isMobile ? 0.7 : 1.2}
-        position={isMobile ? [0, -3, -2.2] : [0, -1.25, -1.5]}
+        scale={0.3}
+        position={[0, 5, -10]}
       />
     </mesh>
   )
